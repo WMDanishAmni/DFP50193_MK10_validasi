@@ -1,59 +1,52 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-    <meta charset="UTF-8">
-    <title>Status Permohonan</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h2 class="header-title">Keputusan Pemprosesan</h2>
-        <div class="result-box">
-            <?php
-            if (isset($_POST['submit'])) {
-                // (b) Menetapkan input kepada pemboleh ubah
-                $nama = $_POST['nama'];
-                $no_matrik = $_POST['no_matrik'];
-                $semester = $_POST['semester'];
-                $tarikh = $_POST['tarikh'];
-                $jabatan = $_POST['jabatan'];
-                $specs = isset($_POST['specs']) ? $_POST['specs'] : "";
-                $alasan = $_POST['alasan'];
+<?php
+session_start();
 
-                $errors = [];
+// Ambil data dan simpan terus ke SESSION
+$_SESSION['nama'] = trim($_POST['nama'] ?? '');
+$_SESSION['no_matrik'] = trim($_POST['no_matrik'] ?? '');
+$_SESSION['semester'] = trim($_POST['semester'] ?? '');
+$_SESSION['tarikh'] = trim($_POST['tarikh'] ?? '');
+$_SESSION['jabatan'] = trim($_POST['jabatan'] ?? '');
+$_SESSION['specs'] = trim($_POST['specs'] ?? '');
+$_SESSION['alasan'] = trim($_POST['alasan'] ?? '');
 
-                // Validasi input kosong
-                if (empty($nama)) $errors[] = "Nama tidak boleh kosong.";
-                if (empty($no_matrik)) $errors[] = "Nombor Matrik tidak boleh kosong.";
-                if (empty($semester)) $errors[] = "Semester tidak boleh kosong.";
-                if (empty($tarikh)) $errors[] = "Tarikh tidak boleh kosong.";
-                if (empty($jabatan)) $errors[] = "Sila pilih jabatan.";
-                if (empty($specs)) $errors[] = "Sila pilih spesifikasi peranti.";
+// Buang session ralat/berjaya yang lama sebelum semakan baru
+unset($_SESSION['error']);
+unset($_SESSION['success']);
 
-                // Validasi panjang alasan (min 25 aksara)
-                if (strlen($alasan) < 25) {
-                    $errors[] = "Alasan permohonan mestilah sekurang-kurangnya 25 aksara.";
-                }
+// Pengesahan Logik (Validation)
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    $_SESSION['error'] = "Sila hantar borang terlebih dahulu.";
 
-                // Paparan Mesej
-                if (!empty($errors)) {
-                    echo "<div class='error-msg'>";
-                    foreach ($errors as $error) {
-                        echo "<p>• $error</p>";
-                    }
-                    echo "</div>";
-                } else {
-                    echo "<div class='success-msg'>";
-                    echo "<p>Permohonan berjaya diterima untuk <strong>$nama</strong> ($no_matrik).</p>";
-                    echo "</div>";
-                }
-            }
-            ?>
-        </div>
-        
-        <div class="nav-link">
-            <a href="index.php" class="link-back">Kembali ke Borang Permohonan</a>
-        </div>
-    </div>
-</body>
-</html>
+} elseif ($_SESSION['nama'] == '') {
+    $_SESSION['error'] = "Nama Penuh tidak diisi.";
+
+} elseif ($_SESSION['no_matrik'] == '') {
+    $_SESSION['error'] = "Nombor Matrik tidak diisi.";
+
+} elseif ($_SESSION['semester'] == '') {
+    $_SESSION['error'] = "Semester tidak diisi.";
+
+} elseif ($_SESSION['tarikh'] == '') {
+    $_SESSION['error'] = "Tarikh Permohonan tidak diisi.";
+
+} elseif ($_SESSION['jabatan'] == '') {
+    $_SESSION['error'] = "Jabatan tidak dipilih.";
+
+} elseif ($_SESSION['specs'] == '') {
+    $_SESSION['error'] = "Sila pilih spesifikasi peranti.";
+
+} elseif ($_SESSION['alasan'] == '') {
+    $_SESSION['error'] = "Alasan Sokongan tidak diisi.";
+
+} elseif (strlen($_SESSION['alasan']) < 25) {
+    $_SESSION['error'] = "Alasan permohonan mestilah sekurang-kurangnya 25 aksara.";
+
+} else {
+    $_SESSION['success'] = "Permohonan Berjaya Diterima!";
+}
+
+// Terus bawa pengguna ke halaman result
+header("Location: result.php");
+exit();
+?>

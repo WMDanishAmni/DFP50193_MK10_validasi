@@ -62,7 +62,7 @@
             </div>
 
             <div class="button-group">
-                <button type="submit" name="submit" class="btn-submit">Hantar</button>
+                <button type="submit" class="btn-submit">Hantar</button>
                 <button type="reset" class="btn-reset">Tetap Semula</button>
             </div>
         </form>
