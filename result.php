@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Keputusan Permohonan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
     <div class="container">
-        <h2 class="header-title">Status Permohonan</h2>
+        <h2 class="header-title">Keputusan Permohonan</h2>
 
         <?php if (isset($_SESSION['error'])): ?>
             <div class="error-msg">
@@ -25,6 +25,7 @@
                 <b>Tarikh:</b> <?php echo $_SESSION['tarikh']; ?><br>
                 <b>Jabatan:</b> <?php echo $_SESSION['jabatan']; ?><br>
                 <b>Spesifikasi:</b> <?php echo $_SESSION['specs']; ?><br>
+                <b>Pengesahan:</b> <?php echo $_SESSION['pengesahan'] == 'Ya' ? 'Disahkan' : 'Tidak Disahkan'; ?><br>
                 <b>Alasan:</b> <?php echo $_SESSION['alasan']; ?><br>
             </div>
         <?php endif; ?>

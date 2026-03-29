@@ -1,91 +1,136 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #f0f8ff; 
+    color: #333; 
+    padding: 20px; 
     display: flex;
     justify-content: center;
-    padding: 20px;
 }
 
-.container {
-    background-color: #ffffff;
-    width: 500px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-top: 8px solid #3498db;
+.container { 
+    background-color: #ffffff; 
+    width: 100%;
+    max-width: 600px; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+    border-top: 5px solid #ff69b4; 
 }
 
-.header-title {
-    color: #2c3e50;
-    text-align: center;
+.header-title { 
+    color: #4b0082; 
+    text-align: center; 
     margin-bottom: 25px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.form-group { 
+    margin-bottom: 18px; 
 }
 
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #34495e;
+.form-label { 
+    display: block; 
+    font-weight: bold; 
+    margin-bottom: 8px; 
+    color: #008080; 
 }
 
-.input-control, .select-control, .textarea-control {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #bdc3c7;
-    border-radius: 5px;
-    box-sizing: border-box; /* Penting supaya padding tidak merosakkan lebar */
+.input-control, .select-control, .textarea-control { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-sizing: border-box; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
 }
 
-.btn-submit {
-    background-color: #2ecc71;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+.input-control:focus, .select-control:focus, .textarea-control:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    outline: none;
 }
 
-.btn-reset {
-    background-color: #e74c3c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+.radio-group, .checkbox-group {
+    padding: 5px 0;
 }
 
-.error-msg {
-    background-color: #fadbd8;
-    color: #c0392b;
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 5px solid #e74c3c;
+.radio-input, .check-input { 
+    margin-right: 5px; 
+    margin-left: 10px;
 }
 
-.success-msg {
-    background-color: #d4efdf;
-    color: #27ae60;
-    padding: 15px;
-    border-radius: 5px;
+.radio-input:first-child, .check-input:first-child {
+    margin-left: 0;
 }
 
-.nav-link {
-    margin-top: 20px;
+.button-group {
+    margin-top: 25px;
     text-align: center;
 }
 
-.link-back {
-    text-decoration: none;
-    color: #3498db;
+.btn-submit { 
+    background-color: #32cd32; 
+    color: white; 
+    border: none; 
+    padding: 12px 25px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
     font-weight: bold;
+    margin-right: 15px; 
+    transition: background-color 0.3s;
 }
 
-.link-back:hover {
-    text-decoration: underline;
+.btn-submit:hover { background-color: #228b22; }
+
+.btn-reset { 
+    background-color: #ff4500; 
+    color: white; 
+    border: none; 
+    padding: 12px 25px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-reset:hover { background-color: #cc3700; }
+
+.error-msg { 
+    background-color: #ffe4e1; 
+    border: 1px solid #ff0000; 
+    padding: 15px; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+    color: #b22222; 
+}
+
+.success-msg { 
+    background-color: #e0ffff; 
+    border: 1px solid #00ced1; 
+    padding: 20px; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+    color: #008b8b; 
+    line-height: 1.6;
+}
+
+.nav-link { 
+    text-align: center; 
+    margin-top: 25px; 
+}
+
+.link-back { 
+    color: #1e90ff; 
+    text-decoration: none; 
+    font-weight: bold; 
+    padding: 10px 15px;
+    border: 1px solid #1e90ff;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.link-back:hover { 
+    background-color: #1e90ff;
+    color: white;
 }
