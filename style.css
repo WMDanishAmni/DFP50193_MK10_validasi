@@ -10,7 +10,7 @@ body {
 .container { 
     background-color: #ffffff; 
     width: 100%;
-    max-width: 600px; 
+    max-width: 650px;
     padding: 30px; 
     border-radius: 10px; 
     box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
@@ -23,20 +23,26 @@ body {
     margin-bottom: 25px;
 }
 
+/* === THE CSS GRID FOR THE FORM === */
 .form-group { 
     margin-bottom: 18px; 
+    display: grid;
+    grid-template-columns: 35% 65%;
+    align-items: center;
 }
 
 .form-label { 
-    display: block; 
     font-weight: bold; 
-    margin-bottom: 8px; 
     color: #008080; 
+}
+
+.form-group:has(.textarea-control) {
+    align-items: flex-start;
 }
 
 .input-control, .select-control, .textarea-control { 
     width: 100%; 
-    padding: 12px; 
+    padding: 10px 12px; 
     border: 1px solid #ccc; 
     border-radius: 5px; 
     box-sizing: border-box; 
@@ -62,9 +68,11 @@ body {
     margin-left: 0;
 }
 
+/* === BUTTONS === */
 .button-group {
-    margin-top: 25px;
+    margin-top: 30px;
     text-align: center;
+    grid-column: 1 / span 2; 
 }
 
 .btn-submit { 
@@ -96,6 +104,7 @@ body {
 
 .btn-reset:hover { background-color: #cc3700; }
 
+/* === MESSAGES & RESULT TABLE === */
 .error-msg { 
     background-color: #ffe4e1; 
     border: 1px solid #ff0000; 
@@ -108,11 +117,34 @@ body {
 .success-msg { 
     background-color: #e0ffff; 
     border: 1px solid #00ced1; 
-    padding: 20px; 
+    padding: 15px; 
     border-radius: 5px; 
     margin-bottom: 20px; 
     color: #008b8b; 
-    line-height: 1.6;
+    text-align: center;
+}
+
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.result-table th, .result-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.result-table th {
+    background-color: #f8f9fa;
+    color: #008080;
+    width: 35%;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #fafafa;
 }
 
 .nav-link { 
@@ -128,6 +160,7 @@ body {
     border: 1px solid #1e90ff;
     border-radius: 5px;
     transition: all 0.3s;
+    display: inline-block;
 }
 
 .link-back:hover { 
